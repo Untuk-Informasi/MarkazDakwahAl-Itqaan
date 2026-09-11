@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yayasan Markaz Dakwah Al-Itqaan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-950:#071B33;
+    --navy-900:#0E2A4A;
+    --blue-700:#125589;
+    --blue-600:#1768AC;
+    --blue-500:#2E86D8;
+    --blue-200:#BFDCF5;
+    --blue-100:#E7F1FB;
+    --paper:#FBFCFE;
+    --ink:#0F202F;
+    --ink-soft:#4A5D6E;
+    --gold:#C7A25C;
+    --line:#D9E6F2;
+    --radius-s:6px;
+    --radius-m:14px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:'Plus Jakarta Sans', sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.serif{
+    font-family:'Amiri', serif;
+    font-weight:700;
+    line-height:1.22;
+    margin:0;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:20px 0;
+    transition:background .35s ease, padding .35s ease, box-shadow .35s ease;
+  }
+  header .wrap{display:flex;align-items:center;justify-content:space-between;}
+  header.scrolled{
+    background:rgba(251,252,254,0.92);
+    backdrop-filter:blur(8px);
+    padding:12px 0;
+    box-shadow:0 1px 0 var(--line);
+  }
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand svg{width:34px;height:34px;flex:none;}
+  .logo-img{width:40px;height:40px;border-radius:9px;object-fit:cover;flex:none;background:#fff;}
+  header:not(.scrolled) .brand,
+  header:not(.scrolled) .navlinks a{color:#fff;}
+  header:not(.scrolled) .brand svg{stroke:#fff;}
+  header:not(.scrolled) .brand svg .star-fill{fill:rgba(255,255,255,.12);}
+  header.scrolled .brand{color:var(--navy-900);}
+  header.scrolled .brand svg{stroke:var(--blue-700);}
+  header.scrolled .brand svg .star-fill{fill:var(--blue-100);}
+  .brand-name{font-family:'Amiri',serif;font-weight:700;font-size:18px;line-height:1.15;}
+  .brand-name small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:500;font-size:11px;letter-spacing:.03em;opacity:.75;}
+  .navlinks{display:flex;gap:30px;font-size:14.5px;font-weight:600;}
+  header.scrolled .navlinks a{color:var(--ink-soft);}
+  .navlinks a{opacity:.92;transition:opacity .2s ease;}
+  .navlinks a:hover{opacity:1;text-decoration:underline;text-underline-offset:4px;}
+  .nav-cta{
+    background:var(--blue-500);color:#fff !important;padding:9px 18px;border-radius:999px;
+    font-size:14px;font-weight:700;
+  }
+  header:not(.scrolled) .nav-cta{background:#fff;color:var(--blue-700) !important;}
+  .burger{display:none;background:none;border:0;cursor:pointer;padding:6px;}
+  .burger span{display:block;width:22px;height:2px;background:currentColor;margin:5px 0;}
+  header:not(.scrolled) .burger{color:#fff;}
+  header.scrolled .burger{color:var(--navy-900);}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;overflow:hidden;
+    min-height:100vh;
+    display:flex;align-items:center;
+    background:radial-gradient(120% 140% at 15% 0%, var(--blue-700) 0%, var(--navy-900) 46%, var(--navy-950) 100%);
+    color:#fff;
+    padding:140px 0 100px;
+  }
+  .hero-bg-photo{
+    position:absolute;inset:0;z-index:0;
+    background-image:url('backroundalitqaan.jpg');
+    background-size:cover;background-position:center;
+    opacity:0.5;
+  }
+  .hero-pattern{
+    position:absolute;inset:0;z-index:1;opacity:0;
+    animation:pattern-in 2.4s ease forwards .2s;
+  }
+  .hero-pattern svg{
+    position:absolute;top:50%;left:50%;
+    width:1400px;height:1400px;
+    transform:translate(-50%,-50%);
+    animation:spin 220s linear infinite;
+  }
+  @keyframes pattern-in{to{opacity:1;}}
+  @keyframes spin{to{transform:translate(-50%,-50%) rotate(360deg);}}
+  .hero-star path{
+    fill:none;stroke:rgba(255,255,255,.16);stroke-width:1;
+  }
+  .hero-inner{position:relative;z-index:2;max-width:680px;}
+  .hero-inner h1{
+    font-size:clamp(34px,5.4vw,58px);
+    opacity:0;transform:translateY(16px);
+    animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards .35s;
+  }
+  .hero-inner p{
+    margin-top:22px;font-size:17.5px;color:var(--blue-200);
+    max-width:560px;
+    opacity:0;transform:translateY(16px);
+    animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards .55s;
+  }
+  .hero-cta{
+    margin-top:36px;display:flex;gap:14px;flex-wrap:wrap;
+    opacity:0;transform:translateY(16px);
+    animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards .75s;
+  }
+  @keyframes rise{to{opacity:1;transform:translateY(0);}}
+  .btn{
+    display:inline-flex;align-items:center;gap:8px;
+    padding:14px 26px;border-radius:999px;font-weight:700;font-size:15px;
+    transition:transform .25s ease, background .25s ease, border-color .25s ease;
+  }
+  .btn-primary{background:var(--blue-500);color:#fff;}
+  .btn-primary:hover{background:#4699e6;transform:translateY(-2px);}
+  .btn-ghost{border:1.5px solid rgba(255,255,255,.4);color:#fff;}
+  .btn-ghost:hover{border-color:#fff;transform:translateY(-2px);}
+
+  .hero-stats{
+    position:relative;z-index:2;
+    margin-top:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:0;
+    border-top:1px solid rgba(255,255,255,.18);
+    padding-top:26px;max-width:900px;
+  }
+  .hero-stats div + div{border-left:1px solid rgba(255,255,255,.16);padding-left:22px;}
+  .stat-num{font-family:'Amiri',serif;font-weight:700;font-size:clamp(24px,3vw,34px);color:#fff;}
+  .stat-label{font-size:12.5px;color:var(--blue-200);margin-top:4px;line-height:1.35;}
+
+  /* ---------- SECTION SHELL ---------- */
+  section{padding:96px 0;}
+  .eyebrow-none{}
+  .section-head{max-width:640px;margin-bottom:52px;}
+  .section-head h2{font-size:clamp(26px,3.4vw,36px);color:var(--navy-900);}
+  .section-head p{margin-top:14px;color:var(--ink-soft);font-size:16px;max-width:560px;}
+  .alt-bg{background:var(--blue-100);}
+
+  /* ---------- ABOUT ---------- */
+  .about-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:64px;align-items:start;}
+  .about-grid p{color:var(--ink-soft);font-size:16px;margin:0 0 16px;}
+  .quote-block{
+    border-left:3px solid var(--blue-500);
+    padding-left:22px;
+  }
+  .quote-block p{
+    font-family:'Amiri',serif;font-style:normal;font-size:19px;color:var(--navy-900);line-height:1.55;
+  }
+  .quote-block cite{display:block;margin-top:10px;font-size:13px;font-style:normal;color:var(--ink-soft);}
+
+  /* ---------- VISI MISI ---------- */
+  .vmt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius-m);overflow:hidden;}
+  .vmt-card{background:#fff;padding:34px 30px;}
+  .vmt-card h3{font-size:20px;color:var(--blue-700);margin-bottom:16px;}
+  .vmt-card ol,.vmt-card ul{margin:0;padding-left:20px;color:var(--ink-soft);font-size:15px;}
+  .vmt-card li{margin-bottom:10px;}
+  .vmt-card li:last-child{margin-bottom:0;}
+  .vmt-card.visi p{color:var(--ink-soft);font-size:15.5px;margin:0;}
+
+  /* ---------- STRUKTUR ---------- */
+  .org{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:56px;}
+  .org-tier{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .org-node{
+    background:#fff;border:1px solid var(--line);border-radius:var(--radius-s);
+    padding:14px 22px;text-align:center;min-width:190px;
+    transition:border-color .2s ease, box-shadow .2s ease;
+  }
+  .org-node:hover{border-color:var(--blue-500);box-shadow:0 6px 20px rgba(23,104,172,.1);}
+  .org-node .role{font-size:11.5px;letter-spacing:.03em;color:var(--blue-600);font-weight:700;margin-bottom:4px;}
+  .org-node .name{font-size:14.5px;font-weight:600;color:var(--navy-900);}
+  .org-node.lead{background:var(--navy-900);border-color:var(--navy-900);}
+  .org-node.lead .role{color:var(--blue-200);}
+  .org-node.lead .name{color:#fff;font-family:'Amiri',serif;font-size:16px;}
+  .org-node.pembina{padding:20px 28px;}
+  .org-node.pembina .role{font-size:13px;}
+  .org-node.pembina .name{font-family:'Amiri',serif;font-size:22px;font-weight:700;color:var(--navy-900);}
+  .org-connector{width:1px;height:26px;background:var(--line);}
+
+  .staff-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);overflow:hidden;}
+  .staff-table th,.staff-table td{padding:13px 20px;text-align:left;font-size:14.5px;}
+  .staff-table thead th{background:var(--navy-900);color:#fff;font-weight:600;font-size:12.5px;letter-spacing:.02em;}
+  .staff-table tbody tr:not(:last-child){border-bottom:1px solid var(--line);}
+  .staff-table tbody tr:hover{background:var(--blue-100);}
+  .staff-table td.role{color:var(--ink-soft);}
+
+  /* ---------- PROGRAM ---------- */
+  .prog-cats{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--line);border:1px solid var(--line);border-radius:var(--radius-m);overflow:hidden;}
+  .prog-cat{background:#fff;padding:32px 34px;}
+  .prog-cat-head{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .prog-cat-head svg{width:26px;height:26px;stroke:var(--blue-600);flex:none;}
+  .prog-cat-head h3{font-size:18px;color:var(--navy-900);font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;}
+  .prog-cat ul{margin:0;padding:0;list-style:none;}
+  .prog-cat li{
+    padding:9px 0;font-size:14.5px;color:var(--ink-soft);
+    border-top:1px dashed var(--line);
+  }
+  .prog-cat li:first-child{border-top:none;}
+
+  .future-box{
+    margin-top:56px;background:var(--navy-900);border-radius:var(--radius-m);
+    padding:40px 44px;color:#fff;
+  }
+  .future-box h3{font-size:20px;color:#fff;margin-bottom:8px;}
+  .future-box > p{color:var(--blue-200);font-size:15px;margin:0 0 26px;max-width:520px;}
+  .future-list{display:grid;grid-template-columns:repeat(2,1fr);gap:10px 40px;padding:0;margin:0;list-style:none;}
+  .future-list li{
+    font-size:14.5px;color:#EAF3FB;padding:8px 0 8px 20px;position:relative;
+    border-top:1px solid rgba(255,255,255,.12);
+  }
+  .future-list li::before{
+    content:"";position:absolute;left:0;top:16px;width:6px;height:6px;background:var(--gold);border-radius:50%;
+  }
+
+  /* ---------- DONASI ---------- */
+  .donasi{
+    background:linear-gradient(135deg,var(--blue-700),var(--navy-900));
+    border-radius:var(--radius-m);
+    padding:56px;color:#fff;
+    display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center;
+  }
+  .donasi h2{color:#fff;font-size:clamp(24px,3vw,32px);}
+  .donasi p{color:var(--blue-200);margin-top:14px;font-size:15.5px;max-width:440px;}
+  .donasi-call{
+    background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);
+    border-radius:var(--radius-m);padding:28px;text-align:center;
+  }
+  .donasi-call .label{font-size:12.5px;color:var(--blue-200);letter-spacing:.03em;margin-bottom:8px;}
+  .donasi-call .num{font-family:'Amiri',serif;font-size:26px;font-weight:700;color:#fff;}
+  .whatsapp-btn{
+    margin-top:18px;display:inline-flex;align-items:center;gap:8px;
+    background:#fff;color:var(--navy-900);padding:12px 22px;border-radius:999px;font-weight:700;font-size:14.5px;
+    position:relative;
+  }
+  .whatsapp-btn .pulse{
+    position:absolute;inset:0;border-radius:999px;border:2px solid #fff;
+    animation:pulse 2.4s ease-out infinite;
+  }
+  @keyframes pulse{0%{opacity:.6;transform:scale(1);}100%{opacity:0;transform:scale(1.18);}}
+
+  /* ---------- PPDB BROSUR (tampilan khusus) ---------- */
+  .ppdb{
+    position:relative;overflow:hidden;
+    background:radial-gradient(120% 160% at 80% 20%, var(--blue-700) 0%, var(--navy-900) 55%, var(--navy-950) 100%);
+    color:#fff;
+  }
+  .ppdb-inner{
+    display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;
+  }
+  .ppdb-text .section-head h2{color:#fff;}
+  .ppdb-text .section-head p{color:var(--blue-200);}
+  .ppdb-text .btn-primary{margin-top:8px;}
+  .ppdb-frame{
+    position:relative;padding:14px;background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.22);border-radius:var(--radius-m);
+    box-shadow:0 30px 70px rgba(0,0,0,.35);
+  }
+  .ppdb-frame img{
+    width:100%;border-radius:8px;cursor:pointer;
+    transition:transform .4s ease;
+  }
+  .ppdb-frame:hover img{transform:scale(1.015);}
+  .ppdb-frame::before{
+    content:"";position:absolute;top:-10px;left:-10px;right:-10px;bottom:-10px;
+    border:1px solid var(--gold);border-radius:calc(var(--radius-m) + 6px);
+    opacity:.55;pointer-events:none;
+  }
+
+  /* ---------- GALERI ---------- */
+  .gallery-grid{
+    display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:16px;
+  }
+  .gallery-item{
+    position:relative;border-radius:var(--radius-s);overflow:hidden;cursor:pointer;
+    aspect-ratio:4/3;background:var(--blue-100);border:1px solid var(--line);
+  }
+  .gallery-item img{
+    width:100%;height:100%;object-fit:cover;
+    transition:transform .45s ease;
+  }
+  .gallery-item:hover img{transform:scale(1.08);}
+  .gallery-caption{
+    position:absolute;left:0;right:0;bottom:0;padding:10px 12px;
+    background:linear-gradient(to top, rgba(7,27,51,.88), transparent);
+    color:#fff;font-size:12.5px;font-weight:600;
+  }
+
+  /* ---------- LIGHTBOX ---------- */
+  .lightbox{
+    position:fixed;inset:0;z-index:300;background:rgba(7,27,51,.95);
+    display:none;align-items:center;justify-content:center;padding:60px 40px;
+  }
+  .lightbox.open{display:flex;}
+  .lightbox img{
+    max-width:90vw;max-height:82vh;border-radius:10px;
+    box-shadow:0 24px 70px rgba(0,0,0,.55);
+    opacity:0;transform:scale(.97);
+    animation:lb-in .3s ease forwards;
+  }
+  @keyframes lb-in{to{opacity:1;transform:scale(1);}}
+  .lightbox-caption{
+    position:absolute;bottom:28px;left:0;right:0;text-align:center;
+    color:#fff;font-size:14.5px;font-weight:600;
+  }
+  .lightbox-close{
+    position:fixed;top:22px;right:26px;z-index:301;
+    width:44px;height:44px;border-radius:50%;
+    background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.32);
+    color:#fff;font-size:24px;line-height:1;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;
+    transition:background .2s ease, transform .2s ease;
+  }
+  .lightbox-close:hover{background:rgba(255,255,255,.2);transform:rotate(90deg);}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--navy-950);color:var(--blue-200);padding:48px 0 28px;}
+  .footer-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+  .footer-brand{display:flex;align-items:center;gap:12px;color:#fff;}
+  .footer-brand svg{width:28px;height:28px;stroke:#fff;}
+  footer .footer-brand .brand-name small{color:var(--blue-200);}
+  .footer-note{font-size:13px;margin-top:24px;color:rgba(234,243,251,.5);border-top:1px solid rgba(255,255,255,.08);padding-top:20px;}
+
+  /* ---------- COUNTER TARGET (no layout impact) ---------- */
+  [data-count]{}
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width:860px){
+    .navlinks,.nav-cta{display:none;}
+    .burger{display:block;}
+    .about-grid,.vmt-grid,.prog-cats,.donasi{grid-template-columns:1fr;}
+    .hero-stats{grid-template-columns:repeat(2,1fr);row-gap:22px;}
+    .hero-stats div:nth-child(2n+1){border-left:none;padding-left:0;}
+    .hero-stats div:nth-child(n+3){border-top:1px solid rgba(255,255,255,.16);padding-top:16px;}
+    .future-list{grid-template-columns:1fr;}
+    .donasi{padding:34px;}
+    .ppdb-inner{grid-template-columns:1fr;}
+  }
+  @media (max-width:560px){
+    section{padding:64px 0;}
+    .hero{padding:120px 0 70px;}
+    .staff-table{display:block;overflow-x:auto;}
+  }
+
+  /* mobile nav drawer */
+  .mobile-drawer{
+    position:fixed;inset:0;background:var(--navy-950);z-index:99;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;
+    transform:translateY(-100%);transition:transform .35s ease;
+  }
+  .mobile-drawer.open{transform:translateY(0);}
+  .mobile-drawer a{color:#fff;font-size:20px;font-family:'Amiri',serif;}
+  .mobile-drawer .close{position:absolute;top:24px;right:28px;background:none;border:0;color:#fff;font-size:26px;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header id="siteHeader">
+  <div class="wrap">
+    <a href="#" class="brand">
+      <img src="logoalitqaan.jpg" alt="Logo Al-Itqaan" class="logo-img">
+      <span class="brand-name">Al-Itqaan<small>Markaz Dakwah</small></span>
+    </a>
+    <nav class="navlinks">
+      <a href="#tentang">Tentang</a>
+      <a href="#visi-misi">Visi &amp; Misi</a>
+      <a href="#struktur">Struktur</a>
+      <a href="#program">Program</a>
+      <a href="#ppdb">PPDB</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#donasi" class="nav-cta">Donasi</a>
+    </nav>
+    <button class="burger" id="burgerBtn" aria-label="Buka menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-drawer" id="mobileDrawer">
+  <button class="close" id="closeDrawer" aria-label="Tutup menu">&times;</button>
+  <a href="#tentang">Tentang</a>
+  <a href="#visi-misi">Visi &amp; Misi</a>
+  <a href="#struktur">Struktur</a>
+  <a href="#program">Program</a>
+  <a href="#ppdb">PPDB</a>
+  <a href="#galeri">Galeri</a>
+  <a href="#donasi">Donasi</a>
+</div>
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="hero-bg-photo"></div>
+  <div class="hero-pattern">
+    <svg class="hero-star" viewBox="0 0 400 400">
+      <defs>
+        <g id="motif">
+          <polygon points="0,-38 9,-14 34,-14 14,1 22,26 0,10 -22,26 -14,1 -34,-14 -9,-14" />
+        </g>
+      </defs>
+      <g transform="translate(200,200)">
+        <use href="#motif" transform="scale(1)"/>
+        <use href="#motif" transform="translate(90,52) scale(0.7)"/>
+        <use href="#motif" transform="translate(-90,52) scale(0.7)"/>
+        <use href="#motif" transform="translate(90,-52) scale(0.7)"/>
+        <use href="#motif" transform="translate(-90,-52) scale(0.7)"/>
+        <use href="#motif" transform="translate(0,104) scale(0.7)"/>
+        <use href="#motif" transform="translate(0,-104) scale(0.7)"/>
+        <use href="#motif" transform="translate(180,0) scale(0.7)"/>
+        <use href="#motif" transform="translate(-180,0) scale(0.7)"/>
+        <use href="#motif" transform="translate(140,140) scale(0.45)"/>
+        <use href="#motif" transform="translate(-140,140) scale(0.45)"/>
+        <use href="#motif" transform="translate(140,-140) scale(0.45)"/>
+        <use href="#motif" transform="translate(-140,-140) scale(0.45)"/>
+      </g>
+    </svg>
+  </div>
+  <div class="wrap hero-inner">
+    <h1>Menghidupkan Al-Qur'an, Membina Umat</h1>
+    <p>Yayasan Markaz Dakwah Al-Itqaan (YAMDA) menjadikan pembelajaran Al-Qur'an, ilmu syar'i, dakwah, dan kepedulian sosial sebagai jalan utama membentuk generasi Qur'ani yang berakhlak mulia.</p>
+    <div class="hero-cta">
+      <a href="#donasi" class="btn btn-primary">Jadi Donatur Tetap</a>
+      <a href="#program" class="btn btn-ghost">Kenali Program Kami</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-num" data-count="15">0</div><div class="stat-label">Santriwati Rumah Tahfidz (SMP–SMA)</div></div>
+      <div><div class="stat-num" data-count="10">0</div><div class="stat-label">Santri Raudhotul Qur'an (TPA)</div></div>
+      <div><div class="stat-num" data-count="30">0</div><div class="stat-label">Peserta Kursus Tahsin &amp; Bahasa Arab</div></div>
+      <div><div class="stat-num" data-count="21">0</div><div class="stat-label">Program yang telah berjalan</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= TENTANG ================= -->
+<section id="tentang">
+  <div class="wrap about-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:24px;">
+        <h2>Tentang Al-Itqaan</h2>
+      </div>
+      <p>Yayasan Markaz Dakwah Al-Itqaan hadir sebagai pusat pembelajaran Al-Qur'an dan dakwah yang melayani masyarakat melalui pendidikan, kajian keagamaan, dan program sosial kemasyarakatan. Kegiatan yayasan berpijak pada pemahaman salafusholeh, dari rumah tahfidz untuk anak dan remaja hingga kursus bagi bapak-bapak dan ibu-ibu di lingkungan sekitar.</p>
+      <p>Selain aktif di bidang pendidikan Al-Qur'an, YAMDA turut menjalankan berbagai program kemanusiaan rutin — mulai dari pembagian sembako setiap pekan, santunan anak yatim dan dhuafa, hingga pengobatan gratis dan bakti sosial bagi masyarakat yang membutuhkan.</p>
+    </div>
+    <div class="quote-block">
+      <p>"Menjadikan pokok pembelajaran Al-Qur'an, ilmu syar'i, dakwah, dan sosial kemasyarakatan sebagai prioritas utama yang berdasarkan Al-Qur'an dan As-Sunnah sesuai dengan pemahaman salafusholeh."</p>
+      <cite>— Visi Yayasan Markaz Dakwah Al-Itqaan</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ================= VISI MISI TUJUAN ================= -->
+<section id="visi-misi" class="alt-bg">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Visi, Misi &amp; Tujuan</h2>
+      <p>Arah gerak Al-Itqaan dalam mendidik, mendakwahkan, dan melayani umat.</p>
+    </div>
+    <div class="vmt-grid">
+      <div class="vmt-card visi">
+        <h3>Visi</h3>
+        <p>Menjadikan pembelajaran Al-Qur'an, ilmu syar'i, dakwah, dan sosial kemasyarakatan sebagai prioritas utama berdasarkan Al-Qur'an dan As-Sunnah sesuai pemahaman salafusholeh.</p>
+      </div>
+      <div class="vmt-card">
+        <h3>Misi</h3>
+        <ol>
+          <li>Mengadakan kegiatan berbasis Al-Qur'an dan As-Sunnah sesuai pemahaman salafusholeh.</li>
+          <li>Mengadakan kegiatan keagamaan, sosial, dan perekonomian Islam yang dibutuhkan masyarakat.</li>
+          <li>Mencetak generasi Qur'ani yang berakhlak mulia.</li>
+        </ol>
+      </div>
+      <div class="vmt-card">
+        <h3>Tujuan</h3>
+        <ol>
+          <li>Membumikan Al-Qur'an dengan melahirkan generasi yang paham agama dan berakhlak mulia.</li>
+          <li>Mendakwahkan Islam sesuai pemahaman para salafusholih.</li>
+          <li>Mengadakan pembelajaran Al-Qur'an, bahasa Arab, dan ilmu syar'i untuk umum.</li>
+          <li>Melaksanakan kegiatan sosial yang bermanfaat bagi masyarakat.</li>
+          <li>Memajukan pendidikan dan perekonomian yang Islami.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= STRUKTUR ================= -->
+<section id="struktur">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Struktur Pengurus</h2>
+      <p>Susunan pembina, pengawas, dan pengurus inti Yayasan Markaz Dakwah Al-Itqaan.</p>
+    </div>
+
+    <div class="org">
+      <div class="org-tier">
+        <div class="org-node pembina"><div class="role">Pembina</div><div class="name">Sudi Raharjo, S.Pd.I</div></div>
+        <div class="org-node"><div class="role">Pengawas</div><div class="name">Pranindyo Yokorian</div></div>
+      </div>
+      <div class="org-connector"></div>
+      <div class="org-tier">
+        <div class="org-node lead"><div class="role">Ketua</div><div class="name">Muh. Salahudin Rofi, Lc</div></div>
+      </div>
+      <div class="org-connector"></div>
+      <div class="org-tier">
+        <div class="org-node"><div class="role">Sekretaris</div><div class="name">Abdul Wahab, S.Pd</div></div>
+        <div class="org-node"><div class="role">Bendahara</div><div class="name">Kunarso</div></div>
+      </div>
+    </div>
+
+    <table class="staff-table">
+      <thead>
+        <tr><th style="width:36px;">No</th><th>Nama</th><th>Jabatan</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Sudi Raharjo, S.Pd.I</td><td class="role">Kepala Sekolah</td></tr>
+        <tr><td>2</td><td>Erlina, Lc</td><td class="role">Sekretaris</td></tr>
+        <tr><td>3</td><td>Khoerunnisa</td><td class="role">Bendahara</td></tr>
+        <tr><td>4</td><td>Kunarso</td><td class="role">Guru</td></tr>
+        <tr><td>5</td><td>Hifni Nashif Umar</td><td class="role">Guru</td></tr>
+        <tr><td>6</td><td>Fathurahman Said</td><td class="role">Guru</td></tr>
+        <tr><td>7</td><td>Tajudin, Lc, MA</td><td class="role">Guru</td></tr>
+        <tr><td>8</td><td>Saeful Bahri, S.Pd</td><td class="role">Guru</td></tr>
+        <tr><td>9</td><td>Waruf Kep.</td><td class="role">Teknisi Bangunan</td></tr>
+        <tr><td>10</td><td>Damin</td><td class="role">Teknisi Bangunan</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= PROGRAM ================= -->
+<section id="program" class="alt-bg">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Program yang Sudah Berjalan</h2>
+      <p>Dua puluh satu kegiatan aktif, terbagi dalam empat bidang layanan Al-Itqaan bagi umat.</p>
+    </div>
+
+    <div class="prog-cats">
+      <div class="prog-cat">
+        <div class="prog-cat-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5C4 4.7 4.7 4 5.5 4H12v16H5.5c-.8 0-1.5-.7-1.5-1.5z"/><path d="M20 5.5C20 4.7 19.3 4 18.5 4H12v16h6.5c.8 0 1.5-.7 1.5-1.5z"/></svg>
+          <h3>Pendidikan Al-Qur'an</h3>
+        </div>
+        <ul>
+          <li>Rumah Tahfidz Qur'an Al-Itqaan (Putri)</li>
+          <li>Rumah Tahfidz Anak dan Balita (RUTAB)</li>
+          <li>Raudhotul Qur'an (TPA)</li>
+          <li>Kursus Tahsin Al-Qur'an dan Bahasa Arab</li>
+          <li>Kursus / Pelatihan Ilmu Waris</li>
+          <li>Perpustakaan buku-buku Islami</li>
+        </ul>
+      </div>
+
+      <div class="prog-cat">
+        <div class="prog-cat-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9l-4 4 1 6-5-3-5 3 1-6-4-4 5.5-.5z"/></svg>
+          <h3>Dakwah &amp; Kajian</h3>
+        </div>
+        <ul>
+          <li>Kajian Islam rutin pekanan</li>
+          <li>Seminar untuk pelajar SMP dan SMA</li>
+          <li>Ramadhan Kids</li>
+        </ul>
+      </div>
+
+      <div class="prog-cat">
+        <div class="prog-cat-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-9.5-8.8C.8 8.6 2.6 5 6 5c2 0 3.3 1.1 4 2.2C10.7 6.1 12 5 14 5c3.4 0 5.2 3.6 3.5 7.2C19.5 16.65 12 21 12 21z"/></svg>
+          <h3>Sosial Kemanusiaan</h3>
+        </div>
+        <ul>
+          <li>Buka puasa bersama di bulan Ramadhan</li>
+          <li>Pembagian daging hewan qurban (Idul Adha)</li>
+          <li>Santunan anak yatim dan dhuafa</li>
+          <li>Bagi-bagi sarapan gratis dan sembako setiap Jumat</li>
+          <li>Pengobatan gratis untuk fakir miskin</li>
+          <li>Bakti sosial pengobatan Thibunnabawi</li>
+          <li>Tanggap bencana alam dan kegiatan sosial lainnya</li>
+        </ul>
+      </div>
+
+      <div class="prog-cat">
+        <div class="prog-cat-head">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10l9-6 9 6M5 10v9h14v-9M9 19v-6h6v6"/></svg>
+          <h3>Ekonomi &amp; Pembangunan</h3>
+        </div>
+        <ul>
+          <li>Kantin / koperasi Al-Itqaan</li>
+          <li>Donasi barang baru dan bekas untuk Al-Itqaan</li>
+          <li>Donatur tetap bulanan, kotak infaq, kencleng seribu sehari</li>
+          <li>Membangun aula serba guna</li>
+          <li>Pembebasan tanah wakaf dan bangunan</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="future-box">
+      <h3>Program yang Akan Dikembangkan</h3>
+      <p>Rencana ke depan Al-Itqaan untuk memperluas manfaat bagi umat — menanti dukungan para donatur dan mitra.</p>
+      <ul class="future-list">
+        <li>Wakaf Al-Qur'an</li>
+        <li>Pemberantasan buta huruf Al-Qur'an untuk semua umur</li>
+        <li>Pelatihan menjahit (akhwat)</li>
+        <li>Dauroh Masyayikh dari luar negeri</li>
+        <li>Pelatihan berhenti dari rokok</li>
+        <li>Pelatihan kepengurusan jenazah</li>
+        <li>Pelatihan bekam</li>
+        <li>Donor darah</li>
+        <li>Sunat massal</li>
+        <li>Pembangunan gedung baru Tahfidz Anak dan Balita</li>
+        <li>I'dad Muhafidzin dan Muhafidzot</li>
+        <li>Dauroh seputar masalah riba</li>
+        <li>Pelatihan penyembelihan hewan qurban</li>
+        <li>Pembangunan Rumah Tahfidz Qur'an Al-Itqaan (Putra)</li>
+        <li>Program Dapur Mulia — makan gratis untuk semua orang</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PPDB BROSUR ================= -->
+<section id="ppdb" class="ppdb">
+  <div class="wrap ppdb-inner">
+    <div class="ppdb-text">
+      <div class="section-head" style="margin-bottom:24px;">
+        <h2>Pendaftaran Santri Baru</h2>
+        <p>Buka kesempatan bergabung di Rumah Qur'an Al-Itqaan. Lihat jadwal, syarat, dan cara pendaftaran pada brosur di samping.</p>
+      </div>
+      <a href="brosurPPDBrumahquran.jpg" target="_blank" rel="noopener" class="btn btn-primary">Lihat Brosur Lengkap</a>
+    </div>
+    <div class="ppdb-frame">
+      <img src="brosurPPDBrumahquran.jpg" alt="Brosur PPDB Rumah Qur'an Al-Itqaan" data-full="brosurPPDBrumahquran.jpg" data-caption="Brosur PPDB Rumah Qur'an Al-Itqaan" class="js-lightbox">
+    </div>
+  </div>
+</section>
+
+<!-- ================= GALERI ================= -->
+<section id="galeri" class="alt-bg">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Galeri Program &amp; Kegiatan</h2>
+      <p>Dokumentasi kegiatan Al-Itqaan di lapangan. Klik gambar untuk melihat ukuran penuh.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item js-lightbox" data-full="ayokurban.jpg" data-caption="Ayo Berqurban"><img src="ayokurban.jpg" alt="Ayo Berqurban" loading="lazy"><div class="gallery-caption">Ayo Berqurban</div></div>
+      <div class="gallery-item js-lightbox" data-full="bagibagisarapan.jpg" data-caption="Bagi-Bagi Sarapan Gratis"><img src="bagibagisarapan.jpg" alt="Bagi-Bagi Sarapan Gratis" loading="lazy"><div class="gallery-caption">Bagi-Bagi Sarapan Gratis</div></div>
+      <div class="gallery-item js-lightbox" data-full="baksosthibunnabawi.jpg" data-caption="Baksos Pengobatan Thibunnabawi"><img src="baksosthibunnabawi.jpg" alt="Baksos Pengobatan Thibunnabawi" loading="lazy"><div class="gallery-caption">Baksos Pengobatan Thibunnabawi</div></div>
+      <div class="gallery-item js-lightbox" data-full="caritanahwakaf.jpg" data-caption="Ikhtiar Tanah Wakaf"><img src="caritanahwakaf.jpg" alt="Ikhtiar Tanah Wakaf" loading="lazy"><div class="gallery-caption">Ikhtiar Tanah Wakaf</div></div>
+      <div class="gallery-item js-lightbox" data-full="gedungalitqaan.jpg" data-caption="Gedung Al-Itqaan"><img src="gedungalitqaan.jpg" alt="Gedung Al-Itqaan" loading="lazy"><div class="gallery-caption">Gedung Al-Itqaan</div></div>
+      <div class="gallery-item js-lightbox" data-full="ifthorramadhan.jpg" data-caption="Ifthar Ramadhan"><img src="ifthorramadhan.jpg" alt="Ifthar Ramadhan" loading="lazy"><div class="gallery-caption">Ifthar Ramadhan</div></div>
+      <div class="gallery-item js-lightbox" data-full="infaqtokenlistrik.jpg" data-caption="Infaq Token Listrik"><img src="infaqtokenlistrik.jpg" alt="Infaq Token Listrik" loading="lazy"><div class="gallery-caption">Infaq Token Listrik</div></div>
+      <div class="gallery-item js-lightbox" data-full="jadwalmapelrumahquran.jpg" data-caption="Jadwal Mata Pelajaran Rumah Qur'an"><img src="jadwalmapelrumahquran.jpg" alt="Jadwal Mata Pelajaran Rumah Qur'an" loading="lazy"><div class="gallery-caption">Jadwal Mata Pelajaran</div></div>
+      <div class="gallery-item js-lightbox" data-full="jasasembelih.jpg" data-caption="Jasa Sembelih Hewan"><img src="jasasembelih.jpg" alt="Jasa Sembelih Hewan" loading="lazy"><div class="gallery-caption">Jasa Sembelih Hewan</div></div>
+      <div class="gallery-item js-lightbox" data-full="kajianislam.jpg" data-caption="Kajian Islam Rutin"><img src="kajianislam.jpg" alt="Kajian Islam Rutin" loading="lazy"><div class="gallery-caption">Kajian Islam Rutin</div></div>
+      <div class="gallery-item js-lightbox" data-full="kegiatanrumahtahfidz.jpg" data-caption="Kegiatan Rumah Tahfidz"><img src="kegiatanrumahtahfidz.jpg" alt="Kegiatan Rumah Tahfidz" loading="lazy"><div class="gallery-caption">Kegiatan Rumah Tahfidz</div></div>
+      <div class="gallery-item js-lightbox" data-full="kelastahsinbapakbapak.jpg" data-caption="Kelas Tahsin Bapak-Bapak"><img src="kelastahsinbapakbapak.jpg" alt="Kelas Tahsin Bapak-Bapak" loading="lazy"><div class="gallery-caption">Kelas Tahsin Bapak-Bapak</div></div>
+      <div class="gallery-item js-lightbox" data-full="menyalurkanroizwaf.jpg" data-caption="Penyaluran Zakat, Infaq &amp; Wakaf"><img src="menyalurkanroizwaf.jpg" alt="Penyaluran Zakat, Infaq & Wakaf" loading="lazy"><div class="gallery-caption">Penyaluran Zakat, Infaq &amp; Wakaf</div></div>
+      <div class="gallery-item js-lightbox" data-full="pedulikorbanbanjir.jpg" data-caption="Peduli Korban Banjir"><img src="pedulikorbanbanjir.jpg" alt="Peduli Korban Banjir" loading="lazy"><div class="gallery-caption">Peduli Korban Banjir</div></div>
+      <div class="gallery-item js-lightbox" data-full="pembangunanasramaputri.jpg" data-caption="Pembangunan Asrama Putri"><img src="pembangunanasramaputri.jpg" alt="Pembangunan Asrama Putri" loading="lazy"><div class="gallery-caption">Pembangunan Asrama Putri</div></div>
+      <div class="gallery-item js-lightbox" data-full="pembuatanpagarsekolah.jpg" data-caption="Pembuatan Pagar Sekolah"><img src="pembuatanpagarsekolah.jpg" alt="Pembuatan Pagar Sekolah" loading="lazy"><div class="gallery-caption">Pembuatan Pagar Sekolah</div></div>
+      <div class="gallery-item js-lightbox" data-full="penyembelihanqurban.jpg" data-caption="Penyembelihan Hewan Qurban"><img src="penyembelihanqurban.jpg" alt="Penyembelihan Hewan Qurban" loading="lazy"><div class="gallery-caption">Penyembelihan Hewan Qurban</div></div>
+      <div class="gallery-item js-lightbox" data-full="pesantrenkilat.jpg" data-caption="Pesantren Kilat"><img src="pesantrenkilat.jpg" alt="Pesantren Kilat" loading="lazy"><div class="gallery-caption">Pesantren Kilat</div></div>
+      <div class="gallery-item js-lightbox" data-full="ppdbrumahtahfidz.jpg" data-caption="PPDB Rumah Tahfidz"><img src="ppdbrumahtahfidz.jpg" alt="PPDB Rumah Tahfidz" loading="lazy"><div class="gallery-caption">PPDB Rumah Tahfidz</div></div>
+      <div class="gallery-item js-lightbox" data-full="qurancamp.jpg" data-caption="Qur'an Camp"><img src="qurancamp.jpg" alt="Qur'an Camp" loading="lazy"><div class="gallery-caption">Qur'an Camp</div></div>
+      <div class="gallery-item js-lightbox" data-full="ramadhankidz.jpg" data-caption="Ramadhan Kids"><img src="ramadhankidz.jpg" alt="Ramadhan Kids" loading="lazy"><div class="gallery-caption">Ramadhan Kids</div></div>
+      <div class="gallery-item js-lightbox" data-full="Rihlahceria.jpg" data-caption="Rihlah Ceria"><img src="Rihlahceria.jpg" alt="Rihlah Ceria" loading="lazy"><div class="gallery-caption">Rihlah Ceria</div></div>
+      <div class="gallery-item js-lightbox" data-full="sedekahberas.jpg" data-caption="Sedekah Beras"><img src="sedekahberas.jpg" alt="Sedekah Beras" loading="lazy"><div class="gallery-caption">Sedekah Beras</div></div>
+      <div class="gallery-item js-lightbox" data-full="Tabunganqurban.jpg" data-caption="Tabungan Qurban"><img src="Tabunganqurban.jpg" alt="Tabungan Qurban" loading="lazy"><div class="gallery-caption">Tabungan Qurban</div></div>
+      <div class="gallery-item js-lightbox" data-full="tahsinalquranmuslimah.jpg" data-caption="Tahsin Al-Qur'an Muslimah"><img src="tahsinalquranmuslimah.jpg" alt="Tahsin Al-Qur'an Muslimah" loading="lazy"><div class="gallery-caption">Tahsin Al-Qur'an Muslimah</div></div>
+      <div class="gallery-item js-lightbox" data-full="tanggapbencanabanjir.jpg" data-caption="Tanggap Bencana Banjir"><img src="tanggapbencanabanjir.jpg" alt="Tanggap Bencana Banjir" loading="lazy"><div class="gallery-caption">Tanggap Bencana Banjir</div></div>
+      <div class="gallery-item js-lightbox" data-full="tilawahramadhan.jpg" data-caption="Tilawah Ramadhan"><img src="tilawahramadhan.jpg" alt="Tilawah Ramadhan" loading="lazy"><div class="gallery-caption">Tilawah Ramadhan</div></div>
+      <div class="gallery-item js-lightbox" data-full="TPQ.jpg" data-caption="Taman Pendidikan Al-Qur'an (TPQ)"><img src="TPQ.jpg" alt="Taman Pendidikan Al-Qur'an (TPQ)" loading="lazy"><div class="gallery-caption">Taman Pendidikan Al-Qur'an (TPQ)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DONASI ================= -->
+<section id="donasi">
+  <div class="wrap">
+    <div class="donasi">
+      <div>
+        <h2>Jadilah Bagian dari Setiap Kebaikan Al-Itqaan</h2>
+        <p>Kabar gembira — terbuka kesempatan meraih pahala besar dengan menjadi donatur tetap bulanan Yayasan Markaz Dakwah Al-Itqaan. Setiap dukungan menghidupkan pendidikan Al-Qur'an dan meringankan beban masyarakat dhuafa.</p>
+      </div>
+      <div class="donasi-call">
+        <div class="label">Hubungi Kami</div>
+        <div class="num">0819-0254-4040</div>
+        <a href="https://wa.me/6281902544040" class="whatsapp-btn" target="_blank" rel="noopener">
+          <span class="pulse"></span>
+          Hubungi via WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="logoalitqaan.jpg" alt="Logo Al-Itqaan" class="logo-img">
+        <span class="brand-name">Al-Itqaan<small>Markaz Dakwah</small></span>
+      </div>
+      <div style="font-size:14px;max-width:320px;">
+        Pusat pembelajaran Al-Qur'an, dakwah, dan pelayanan sosial kemasyarakatan.
+      </div>
+    </div>
+    <div class="footer-note">© Yayasan Markaz Dakwah Al-Itqaan. Dibuat untuk memudahkan umat mengenal dan mendukung program-program Al-Itqaan.</div>
+  </div>
+</footer>
+
+<!-- ================= LIGHTBOX ================= -->
+<button class="lightbox-close" id="lightboxClose" aria-label="Tutup" style="display:none;">&times;</button>
+<div class="lightbox" id="lightbox">
+  <img id="lightboxImg" src="" alt="">
+  <div class="lightbox-caption" id="lightboxCaption"></div>
+</div>
+
+<script>
+  // header scroll state
+  const header = document.getElementById('siteHeader');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // mobile drawer
+  const drawer = document.getElementById('mobileDrawer');
+  document.getElementById('burgerBtn').addEventListener('click', () => drawer.classList.add('open'));
+  document.getElementById('closeDrawer').addEventListener('click', () => drawer.classList.remove('open'));
+  drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', () => drawer.classList.remove('open')));
+
+  // stat counters — triggered once when hero is in view
+  const counters = document.querySelectorAll('[data-count]');
+  let counted = false;
+  function runCounters(){
+    if (counted) return;
+    counted = true;
+    counters.forEach(el => {
+      const target = parseInt(el.getAttribute('data-count'), 10);
+      const duration = 1400;
+      const start = performance.now();
+      function tick(now){
+        const p = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(eased * target);
+        if (p < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    });
+  }
+  setTimeout(runCounters, 900);
+
+  // lightbox
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  const lightboxClose = document.getElementById('lightboxClose');
+
+  function openLightbox(src, caption){
+    lightboxImg.src = src;
+    lightboxImg.alt = caption || '';
+    lightboxCaption.textContent = caption || '';
+    lightbox.classList.add('open');
+    lightboxClose.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightboxClose.style.display = 'none';
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.js-lightbox').forEach(el => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      openLightbox(el.getAttribute('data-full'), el.getAttribute('data-caption'));
+    });
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+</body>
+</html>
