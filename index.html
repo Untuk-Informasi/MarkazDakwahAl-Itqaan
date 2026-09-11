@@ -198,9 +198,9 @@
   .org-node.lead{background:var(--navy-900);border-color:var(--navy-900);}
   .org-node.lead .role{color:var(--blue-200);}
   .org-node.lead .name{color:#fff;font-family:'Amiri',serif;font-size:16px;}
-  .org-node.pembina{padding:20px 28px;}
-  .org-node.pembina .role{font-size:13px;}
-  .org-node.pembina .name{font-family:'Amiri',serif;font-size:22px;font-weight:700;color:var(--navy-900);}
+  .org-node.pembina{padding:26px 36px;background:var(--blue-100);border-color:var(--blue-500);border-width:2px;}
+  .org-node.pembina .role{font-size:14px;color:var(--blue-700);font-weight:800;}
+  .org-node.pembina .name{font-family:'Amiri',serif;font-size:26px;font-weight:700;color:var(--blue-700);}
   .org-connector{width:1px;height:26px;background:var(--line);}
 
   .staff-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:var(--radius-m);overflow:hidden;}
@@ -340,10 +340,23 @@
 
   /* ---------- FOOTER ---------- */
   footer{background:var(--navy-950);color:var(--blue-200);padding:48px 0 28px;}
-  .footer-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:24px;}
+  .footer-grid{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:40px;}
   .footer-brand{display:flex;align-items:center;gap:12px;color:#fff;}
   .footer-brand svg{width:28px;height:28px;stroke:#fff;}
   footer .footer-brand .brand-name small{color:var(--blue-200);}
+  .footer-col h4{
+    font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;font-weight:700;
+    letter-spacing:.04em;color:#fff;margin-bottom:12px;text-transform:uppercase;
+  }
+  .footer-col .addr{display:flex;gap:10px;font-size:14px;line-height:1.55;color:var(--blue-200);max-width:240px;}
+  .footer-col .addr svg{width:18px;height:18px;flex:none;margin-top:2px;stroke:var(--blue-200);}
+  .social-row{display:flex;flex-direction:column;gap:10px;}
+  .social-row a{
+    display:flex;align-items:center;gap:10px;font-size:14px;color:var(--blue-200);
+    transition:color .2s ease;
+  }
+  .social-row a:hover{color:#fff;}
+  .social-row svg{width:18px;height:18px;stroke:currentColor;flex:none;}
   .footer-note{font-size:13px;margin-top:24px;color:rgba(234,243,251,.5);border-top:1px solid rgba(255,255,255,.08);padding-top:20px;}
 
   /* ---------- COUNTER TARGET (no layout impact) ---------- */
@@ -449,7 +462,7 @@
     </div>
     <div class="hero-stats">
       <div><div class="stat-num" data-count="15">0</div><div class="stat-label">Santriwati Rumah Tahfidz (SMP–SMA)</div></div>
-      <div><div class="stat-num" data-count="10">0</div><div class="stat-label">Santri Raudhotul Qur'an (TPA)</div></div>
+      <div><div class="stat-num" data-count="20">0</div><div class="stat-label">Santri Raudhotul Qur'an (TPA)</div></div>
       <div><div class="stat-num" data-count="30">0</div><div class="stat-label">Peserta Kursus Tahsin &amp; Bahasa Arab</div></div>
       <div><div class="stat-num" data-count="21">0</div><div class="stat-label">Program yang telah berjalan</div></div>
     </div>
@@ -464,7 +477,7 @@
         <h2>Tentang Al-Itqaan</h2>
       </div>
       <p>Yayasan Markaz Dakwah Al-Itqaan hadir sebagai pusat pembelajaran Al-Qur'an dan dakwah yang melayani masyarakat melalui pendidikan, kajian keagamaan, dan program sosial kemasyarakatan. Kegiatan yayasan berpijak pada pemahaman salafusholeh, dari rumah tahfidz untuk anak dan remaja hingga kursus bagi bapak-bapak dan ibu-ibu di lingkungan sekitar.</p>
-      <p>Selain aktif di bidang pendidikan Al-Qur'an, YAMDA turut menjalankan berbagai program kemanusiaan rutin — mulai dari pembagian sembako setiap pekan, santunan anak yatim dan dhuafa, hingga pengobatan gratis dan bakti sosial bagi masyarakat yang membutuhkan.</p>
+      <p>Selain aktif di bidang pendidikan Al-Qur'an, YAMDA turut menjalankan berbagai program kemanusiaan rutin — mulai dari pembagian sembako, santunan anak yatim dan dhuafa, hingga pengobatan gratis dan bakti sosial bagi masyarakat yang membutuhkan.</p>
     </div>
     <div class="quote-block">
       <p>"Menjadikan pokok pembelajaran Al-Qur'an, ilmu syar'i, dakwah, dan sosial kemasyarakatan sebagai prioritas utama yang berdasarkan Al-Qur'an dan As-Sunnah sesuai dengan pemahaman salafusholeh."</p>
@@ -522,7 +535,7 @@
       </div>
       <div class="org-connector"></div>
       <div class="org-tier">
-        <div class="org-node lead"><div class="role">Ketua</div><div class="name">Muh. Salahudin Rofi, Lc</div></div>
+        <div class="org-node lead"><div class="role">Ketua</div><div class="name">Muhamad Sholahudin Rofi, Lc</div></div>
       </div>
       <div class="org-connector"></div>
       <div class="org-tier">
@@ -542,7 +555,7 @@
         <tr><td>4</td><td>Kunarso</td><td class="role">Guru</td></tr>
         <tr><td>5</td><td>Hifni Nashif Umar</td><td class="role">Guru</td></tr>
         <tr><td>6</td><td>Fathurahman Said</td><td class="role">Guru</td></tr>
-        <tr><td>7</td><td>Tajudin, Lc, MA</td><td class="role">Guru</td></tr>
+        <tr><td>7</td><td>Muhamad Sholahudin Rofi, Lc</td><td class="role">Guru</td></tr>
         <tr><td>8</td><td>Saeful Bahri, S.Pd</td><td class="role">Guru</td></tr>
         <tr><td>9</td><td>Waruf Kep.</td><td class="role">Teknisi Bangunan</td></tr>
         <tr><td>10</td><td>Damin</td><td class="role">Teknisi Bangunan</td></tr>
@@ -678,13 +691,12 @@
       <div class="gallery-item js-lightbox" data-full="kajianislam.jpg" data-caption="Kajian Islam Rutin"><img src="kajianislam.jpg" alt="Kajian Islam Rutin" loading="lazy"><div class="gallery-caption">Kajian Islam Rutin</div></div>
       <div class="gallery-item js-lightbox" data-full="kegiatanrumahtahfidz.jpg" data-caption="Kegiatan Rumah Tahfidz"><img src="kegiatanrumahtahfidz.jpg" alt="Kegiatan Rumah Tahfidz" loading="lazy"><div class="gallery-caption">Kegiatan Rumah Tahfidz</div></div>
       <div class="gallery-item js-lightbox" data-full="kelastahsinbapakbapak.jpg" data-caption="Kelas Tahsin Bapak-Bapak"><img src="kelastahsinbapakbapak.jpg" alt="Kelas Tahsin Bapak-Bapak" loading="lazy"><div class="gallery-caption">Kelas Tahsin Bapak-Bapak</div></div>
-      <div class="gallery-item js-lightbox" data-full="menyalurkanroizwaf.jpg" data-caption="Penyaluran Zakat, Infaq &amp; Wakaf"><img src="menyalurkanroizwaf.jpg" alt="Penyaluran Zakat, Infaq & Wakaf" loading="lazy"><div class="gallery-caption">Penyaluran Zakat, Infaq &amp; Wakaf</div></div>
+      <div class="gallery-item js-lightbox" data-full="menyalurkanzizwaf.jpg" data-caption="Penyaluran Zakat, Infaq &amp; Wakaf"><img src="menyalurkanzizwaf.jpg" alt="Penyaluran Zakat, Infaq & Wakaf" loading="lazy"><div class="gallery-caption">Penyaluran Zakat, Infaq &amp; Wakaf</div></div>
       <div class="gallery-item js-lightbox" data-full="pedulikorbanbanjir.jpg" data-caption="Peduli Korban Banjir"><img src="pedulikorbanbanjir.jpg" alt="Peduli Korban Banjir" loading="lazy"><div class="gallery-caption">Peduli Korban Banjir</div></div>
       <div class="gallery-item js-lightbox" data-full="pembangunanasramaputri.jpg" data-caption="Pembangunan Asrama Putri"><img src="pembangunanasramaputri.jpg" alt="Pembangunan Asrama Putri" loading="lazy"><div class="gallery-caption">Pembangunan Asrama Putri</div></div>
       <div class="gallery-item js-lightbox" data-full="pembuatanpagarsekolah.jpg" data-caption="Pembuatan Pagar Sekolah"><img src="pembuatanpagarsekolah.jpg" alt="Pembuatan Pagar Sekolah" loading="lazy"><div class="gallery-caption">Pembuatan Pagar Sekolah</div></div>
       <div class="gallery-item js-lightbox" data-full="penyembelihanqurban.jpg" data-caption="Penyembelihan Hewan Qurban"><img src="penyembelihanqurban.jpg" alt="Penyembelihan Hewan Qurban" loading="lazy"><div class="gallery-caption">Penyembelihan Hewan Qurban</div></div>
       <div class="gallery-item js-lightbox" data-full="pesantrenkilat.jpg" data-caption="Pesantren Kilat"><img src="pesantrenkilat.jpg" alt="Pesantren Kilat" loading="lazy"><div class="gallery-caption">Pesantren Kilat</div></div>
-      <div class="gallery-item js-lightbox" data-full="ppdbrumahtahfidz.jpg" data-caption="PPDB Rumah Tahfidz"><img src="ppdbrumahtahfidz.jpg" alt="PPDB Rumah Tahfidz" loading="lazy"><div class="gallery-caption">PPDB Rumah Tahfidz</div></div>
       <div class="gallery-item js-lightbox" data-full="qurancamp.jpg" data-caption="Qur'an Camp"><img src="qurancamp.jpg" alt="Qur'an Camp" loading="lazy"><div class="gallery-caption">Qur'an Camp</div></div>
       <div class="gallery-item js-lightbox" data-full="ramadhankidz.jpg" data-caption="Ramadhan Kids"><img src="ramadhankidz.jpg" alt="Ramadhan Kids" loading="lazy"><div class="gallery-caption">Ramadhan Kids</div></div>
       <div class="gallery-item js-lightbox" data-full="Rihlahceria.jpg" data-caption="Rihlah Ceria"><img src="Rihlahceria.jpg" alt="Rihlah Ceria" loading="lazy"><div class="gallery-caption">Rihlah Ceria</div></div>
@@ -726,7 +738,31 @@
         <img src="logoalitqaan.jpg" alt="Logo Al-Itqaan" class="logo-img">
         <span class="brand-name">Al-Itqaan<small>Markaz Dakwah</small></span>
       </div>
-      <div style="font-size:14px;max-width:320px;">
+      <div class="footer-col">
+        <h4>Alamat</h4>
+        <div class="addr">
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.6-7-11a7 7 0 1 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <span>Jl. Taman Siswa Saditan Indah 7 no.11<br>Rt.10 Rw.02 Saditan Brebes<br>Jawa Tengah</span>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Media Sosial</h4>
+        <div class="social-row">
+          <a href="https://www.facebook.com/search/top?q=rumah%20tahfidz%20al-itqaan" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8h-2a2 2 0 0 0-2 2v2H9v3h3v7h3v-7h2.5l.5-3H15v-1.5c0-.6.4-1 1-1H17V6.2c-.4-.05-1.2-.2-2-.2z"/></svg>
+            <span>Facebook — Rumah Tahfidz Al-Itqaan</span>
+          </a>
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4"/><circle cx="12" cy="12" r="3.3"/><circle cx="16.6" cy="7.4" r="0.6" fill="currentColor" stroke="none"/></svg>
+            <span>Instagram — Rumah Tahfidz Al-Itqaan</span>
+          </a>
+          <a href="https://www.tiktok.com/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4v9.2a3.3 3.3 0 1 1-2.8-3.26"/><path d="M15 4c.4 2 1.9 3.4 4 3.6"/></svg>
+            <span>TikTok — Rumah Tahfidz Al-Itqaan</span>
+          </a>
+        </div>
+      </div>
+      <div style="font-size:14px;max-width:280px;color:var(--blue-200);">
         Pusat pembelajaran Al-Qur'an, dakwah, dan pelayanan sosial kemasyarakatan.
       </div>
     </div>
